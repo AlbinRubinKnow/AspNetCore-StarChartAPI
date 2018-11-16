@@ -108,9 +108,6 @@ namespace StarChart.Controllers
             return NoContent();
         }
 
-
-
-
     }
 }
 
