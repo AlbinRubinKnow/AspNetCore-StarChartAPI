@@ -68,8 +68,6 @@ namespace StarChart.Controllers
         public IActionResult Update(int id, CelestialObject celestialObject)
         {
             var existingObject = _context.CelestialObjects.Find(id);
-
-            _context.CelestialObjects.Add(celestialObject);
             if (existingObject == null)
                 return NotFound();
 
@@ -102,8 +100,7 @@ namespace StarChart.Controllers
         public IActionResult Delete(int id)
         {
             var celestialObject = _context.CelestialObjects.Where(e => e.Id == id || e.OrbitedObjectId == id);
-
-            if (celestialObject.Any())
+            if (!celestialObject.Any())
                 return NotFound();
 
             _context.CelestialObjects.RemoveRange(celestialObject);
